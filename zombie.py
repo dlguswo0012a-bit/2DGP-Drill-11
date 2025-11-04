@@ -36,10 +36,11 @@ class Zombie:
         self.damage = False
         self.w = 200
         self.h = 200
+        self.bb = 100
 
 
     def get_bb(self):
-        return self.x - 100, self.y - 100, self.x + 100, self.y + 100
+        return self.x - self.bb, self.y - self.bb, self.x + self.bb, self.y + self.bb
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
@@ -69,5 +70,6 @@ class Zombie:
             self.w = self.w/2
             self.h = self.h/2
             self.y = self.y- self.h/2
+            self.bb = self.bb/2
         elif group == 'zombies:ball'and self.damage:
             game_world.remove_object(self)
