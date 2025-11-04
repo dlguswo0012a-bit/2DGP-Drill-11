@@ -41,5 +41,5 @@ class Ball:
             self.stopped = True
             game_world.remove_collision_object(self)
 
-        elif group == 'zombies:ball':
+        elif group == 'zombie:ball':
             game_world.remove_object(self)
