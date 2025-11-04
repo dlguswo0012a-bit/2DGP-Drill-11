@@ -42,7 +42,10 @@ def init():
     game_world.add_collision_pair('boy:ball', boy, None) #[[boy], []]
     for ball in balls:
         game_world.add_collision_pair('boy:ball',None,ball)#[[boy], [ball1, ball2, ...]]
-
+    #좀비랑 공 사이 + 소년과 좀비의 충돌검사
+    for zombie in zombies:
+        game_world.add_collision_pair('boy:zombies',None,zombie)
+        game_world.add_collision_pair('zombies:ball', zombie, None)
 
 def update():
     game_world.update()
