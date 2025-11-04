@@ -33,6 +33,8 @@ class Zombie:
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
+        self.damage = False
+
 
 
     def get_bb(self):
@@ -60,5 +62,7 @@ class Zombie:
         pass
 
     def handle_collision(self, group, other):
-        if group == 'zombies:ball':
+        if group == 'zombies:ball'and not self.damage:
+            self.damage = True
+        elif group == 'zombies:ball'and self.damage:
             game_world.remove_object(self)
